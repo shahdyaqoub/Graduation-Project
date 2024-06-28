@@ -4,12 +4,12 @@ import cvzone
 import numpy as np
 
 # The Video
-cap = cv2.VideoCapture('C:\\cmder\\LoparkGrad\\graduation-project\\back\\python\\video\\vid22.mp4')
+cap = cv2.VideoCapture('C:\\Users\\DELL\\Desktop\\ShahdFinalLopark\\graduation-final\\back\\python\\video\\vid22.mp4')
 
-with open('CarParkPos', 'rb') as f:  # rb is read binary
+with open('CarParkPoss', 'rb') as f:  # rb is read binary
     posList = pickle.load(f)
 
-width, height = 140, 30
+width, height = 110, 30
 
 def checkParkingSpace(img, imgProc):
     counterSpace = 0
@@ -21,7 +21,7 @@ def checkParkingSpace(img, imgProc):
         cvzone.putTextRect(img, str(countOfPix), (x, y + height - 2),
                            colorR=(0, 0, 0), scale=0.7, thickness=1, offset=0) 
         
-        if countOfPix < 1220:
+        if countOfPix < 1200:
             color = (0, 255, 0)  # Green
             thickness = 2
             counterSpace += 1

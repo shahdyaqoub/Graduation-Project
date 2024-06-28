@@ -1,8 +1,15 @@
 import axios from 'axios';
 
+// إعداد Axios مع عنوان URL الأساسي (Base URL)
+const apiClient = axios.create({
+  baseURL: 'http://localhost:3000/api/v1',  // تأكد من أن عنوان URL والمنفذ صحيحان
+  timeout: 1000,
+});
+
+// دالة لإرسال طلب POST مع البيانات المطلوبة
 export const youreExperince1 = async (emotion, text) => {
   try {
-    const response = await axios.post("http://localhost:5002/api/v1/youreExperince", {
+    const response = await apiClient.post('/youreExperince', {
       emotion,
       text
     });
@@ -16,12 +23,14 @@ export const youreExperince1 = async (emotion, text) => {
   }
 };
 
-export const ContactUs = async (Name, Email,Message) => {
-      
-try {
-   const response = await axios.post("http://localhost:5002/api/v1/contact",
-       {Name, Email,Message}
-      );
+// دالة لإرسال طلب POST لنموذج الاتصال
+export const ContactUs = async (Name, Email, Message) => {
+  try {
+    const response = await apiClient.post('/contact', {
+      Name,
+      Email,
+      Message
+    });
     if (response.status === 200) {
       console.log("Contact submitted successfully");
       return response.data;
@@ -31,12 +40,3 @@ try {
     throw new Error("Failed to submit contact");
   }
 };
-
-
-// لو لباك اند بشتغل ع البورتت 3000 
-// الفرونت عاي بروت عادي 
-// بما انو الباك اند بشتغل ع 3000  لازم الفرونت ايند 
-// لما ااضرب ال api  عالبورت 3000 
-// مشان يقددر يوصل للباك اند والباك اند  لازم تكون شغالة 
-// السيرفر يعني الباك اند وهو شغال بتوقع انو يجيه اي بي ايه ع بورت 3000 
-// 

@@ -8,12 +8,12 @@ import numpy as np
 app = Flask(__name__)
 CORS(app)  # Initialize CORS
 
-cap = cv2.VideoCapture('C:\\cmder\\LoparkGrad\\graduation-project\\back\\python\\video\\vid22.mp4')
+cap = cv2.VideoCapture('C:\\Users\\DELL\\Desktop\\ShahdFinalLopark\\graduation-final\\back\\python\\video\\vid22.mp4')
 
-with open('C:\\Users\\ama\\Desktop\\our project\\back\\python\\CarParkPos', 'rb') as f:
+with open('C:\\Users\\DELL\\Desktop\\ShahdFinalLopark\\graduation-final\\back\\python\\CarParkPoss', 'rb') as f:
     posList = pickle.load(f)
 
-width, height = 140, 30
+width, height = 110, 30
 free_spots = 0
 reserved_spots = 0
 
@@ -29,7 +29,7 @@ def checkParkingSpace(imgProc, img):
         cvzone.putTextRect(img, str(countOfPix), (x, y + height - 2),
                            colorR=(0, 0, 0), scale=0.7, thickness=1, offset=0)
 
-        if countOfPix < 1297:
+        if countOfPix < 1200:
             color = (0, 255, 0)  # Green
             thickness = 2
             counterSpace += 1
